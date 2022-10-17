@@ -1,0 +1,34 @@
+body {
+    height: 100%;
+}
+
+.container {
+    position: absolute;
+    top: 50%; right: 50%;
+    transform: translate(50%,-50%);
+    }
+
+#input {
+    width: 100%;
+    height: 100%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+}
+
+button {
+    margin-top: 10%;
+    width: 100%;
+    height: 100%;
+}
+
+.recipe {
+    margin-top: 10%;
+    color: white;
+    background-color: black;
+    padding: 10px;
+    display: none;
+}
