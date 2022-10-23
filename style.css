@@ -1,16 +1,26 @@
 body {
     height: 100%;
+    overflow: visible;
 }
 
-.container {
-    position: absolute;
-    top: 50%; right: 50%;
-    transform: translate(50%,-50%);
-    }
+.divider{
+    height: 100%;
+    display: flex;
+
+}
+
+.food{
+    flex: 1;
+    position: relative;
+
+}
+
+.restaurants {
+    flex: 1;
+    position: relative;
+}
 
 #input {
-    width: 100%;
-    height: 100%;
     padding: 12px 20px;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -21,14 +31,18 @@ body {
 
 button {
     margin-top: 10%;
-    width: 100%;
-    height: 100%;
 }
 
-.recipe {
+.menu-item {
     margin-top: 10%;
     color: white;
     background-color: black;
     padding: 10px;
     display: none;
+    cursor: pointer
 }
+
+.card-body {
+    margin: auto;
+}
+
