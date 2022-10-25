@@ -1,42 +1,24 @@
-const submit = document.getElementById('submit'); //getting the div that has the ID
-const restaurant = document.getElementById('restaurants');
+const submit = document.getElementById("submit");
+const restaurant = document.getElementById("restaurants");
 
 $(".menu-item").click(function (event) {
   restaurant.innerHTML = "";
-  const item = $(event.target).text();
-  const items = item.replace(/ /g, "%20");
-  console.log(item)
-  var url = `https://nameless-scrubland-76048.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=33.75104&longitude=-117.9844608&term=${items}`;
-  console.log(url)
-  fetch(url, {
-    method: "GET",
-    headers: {
-      Authorization:
-        "Bearer " +
-        "5VIQsxmIHW5OiTntMOguATgmQrrCtZmy8ro_Ee8VXK_qNNsTdodI43XzVJyL2i2Ciyr8Ts99VT2hA7ysknWzjc2wT2tDP8AGT8MqlPHrJq6L9jvKUE6OXqgSvIhOY3Yx",
-      "Access-Control-Allow-Origin": "*",
-    },
-  })
-    .then(function (response) {
-      if (response.ok) {
-        response.json()
-
-          .then((data) => {
-          for (let i = 0; i < 10; i++) {
-            const name = data.businesses[i].name;
-            const phone = data.businesses[i].phone;
-            const address =
-              data.businesses[i].location.display_address[0] +
-              data.businesses[i].location.display_address[1];
-            const rating = data.businesses[i].rating;
-            const review = data.businesses[i].review_count;
-            const image = data.businesses[i].image_url;
-            restaurants(name, phone, address, rating, review, image);
-          }
-        });
-      } else {
-        alert("Error: " + response.statusText);
-      }
+  getLocation(function (lat_lng) {
+    const lat = lat_lng.lat;
+    const lon = lat_lng.lng;
+    const item = $(event.target).text();
+    const items = item.replace(/ /g, "%20");
+    console.log(item);
+    var url = `https://nameless-scrubland-76048.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&term=${items}`;
+    console.log(url);
+    fetch(url, {
+      method: "GET",
+      headers: {
+        Authorization:
+          "Bearer " +
+          "5VIQsxmIHW5OiTntMOguATgmQrrCtZmy8ro_Ee8VXK_qNNsTdodI43XzVJyL2i2Ciyr8Ts99VT2hA7ysknWzjc2wT2tDP8AGT8MqlPHrJq6L9jvKUE6OXqgSvIhOY3Yx",
+        "Access-Control-Allow-Origin": "*",
+      },
     })
       .then(function (response) {
         if (response.ok) {
@@ -115,20 +97,3 @@ function getLocation(callback) {
 }
 
 
-
-function getLocation(callback) {
-  if (navigator.geolocation) {
-    var lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
-      console.log(position);
-      var user_position = {};
-      user_position.lat = position.coords.latitude;
-      user_position.lng = position.coords.longitude;
-      callback(user_position);
-    });
-  } else {
-    alert("Geolocation is not supported by this browser.");
-  }
-}
-getLocation(function (lat_lng) {
-  console.log(lat_lng);
-});
