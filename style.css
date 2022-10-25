@@ -1,6 +1,10 @@
 body {
     height: 50%;
     overflow: visible;
+    background-image: url(./background.png);
+
+    background-size: cover;
+    background-repeat: none;
 }
 
 .divider{
@@ -12,12 +16,16 @@ body {
 .food{
     flex: 1;
     position: relative;
-
+    text-align: center;
+    justify-content: center;
+    
 }
 
 .restaurants {
     flex: 5;
     position: relative;
+    text-align: center !important;
+    justify-content: center !important;
 }
 
 #input {
@@ -27,22 +35,67 @@ body {
     border-radius: 4px;
     background-color: #f7f6f5;
     resize: none;
+    margin: 5%;
+    
 }
 
-button {
-    margin-top: 10%;
+
+
+.menu-img {
+    height: 100%;
+    width: 64%;
+    border: 3px solid #333333;
+    border-radius: 2% 6% 5% 4% / 1% 1% 2% 4%;
 }
 
 .menu-item {
-    margin-top: 10%;
-    color: white;
-    background-color: black;
-    padding: 10px;
-    display: none;
-    cursor: pointer
+  color: white;
+  font-size: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .card-body {
     margin: auto;
 }
 
+.card {
+        border: 3px solid #333333 !important;
+    margin: 1.5%
+}
+.info {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  position: relative;
+  display: none;
+}
+
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+  height: 100%;
+  width: 64%;
+  opacity: 0;
+  transform: translateX(28%);
+  transition: 0.5s ease;
+  background-color: rgb(0, 0, 0, 0.5);
+  cursor: pointer
+}
+
+.info:hover .overlay {
+  opacity: 1;
+}
+
+.food-img {
+    object-fit: cover;
+        border: 3px solid #333333;
+}

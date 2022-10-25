@@ -23,7 +23,7 @@ $(".menu-item").click(function (event) {
       .then(function (response) {
         if (response.ok) {
           response.json().then((data) => {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 6; i++) {
               const name = data.businesses[i].name;
               const phone = data.businesses[i].phone;
               const address =
@@ -45,7 +45,14 @@ $(".menu-item").click(function (event) {
   });
 });
 
-submit.onclick = getFood = () => {
+document.getElementById('input').addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    getFood()
+  }
+});
+
+
+const getFood = () => {
   var myHeaders = new Headers();
   myHeaders.append("apikey", "I1v5mLVa9E2WwsnrKGzY0mVoEpGHTE62");
   const query = document.getElementById("input").value;
@@ -63,9 +70,13 @@ submit.onclick = getFood = () => {
     .then((data) => {
       for (let i = 0; i < 6; i++) {
         const recipe = data.results[i].title;
+        const image = data.results[i].image;
         const recipes = $(".menu-item");
+        const images = $(".menu-img")
+        const info = $(".info");
         recipes[i].innerHTML = recipe;
-        recipes[i].style.display = "block";
+        images[i].src = image
+        info[i].style.display = "block";
       }
     });
 };
@@ -77,8 +88,8 @@ function restaurants(name, phone, address, rating, review, image) {
     <h6 class="card-subtitle mb-2 text-muted" id ='cardInfo'>Address: ${address}</h6>
     <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Phone: ${phone}</h6>
     <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Rating: ${rating}</h6>
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Reviews: ${review} AM</h6>
-    <img style = "width: 250px; height: 300px" src = "${image}" />
+    <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Reviews: ${review}</h6>
+    <img class = "food-img" style = "width: 250px; height: 300px" src = "${image}" />
     </div>
     </div>`;
 }
@@ -95,5 +106,6 @@ function getLocation(callback) {
     alert("Geolocation is not supported by this browser.");
   }
 }
+
 
 
