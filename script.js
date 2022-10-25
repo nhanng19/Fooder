@@ -1,4 +1,4 @@
-const submit = document.getElementById('submit');
+const submit = document.getElementById('submit'); //getting the div that has the ID
 const restaurant = document.getElementById('restaurants');
 
 
@@ -7,7 +7,7 @@ $('.menu-item').click(function (event) {
   const item = $(event.target).text();
   const items = item.replace(/ /g, "%20");
   console.log(item)
-  var url = `https://nameless-scrubland-76048.herokuapp.com/https://api.yelp.com/v3/businesses/search?location=NYC&term=${items}`;
+  var url = `https://nameless-scrubland-76048.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=33.75104&longitude=-117.9844608&term=${items}`;
   console.log(url)
   fetch(url, {
     method: "GET",
@@ -20,8 +20,9 @@ $('.menu-item').click(function (event) {
   })
     .then(function (response) {
       if (response.ok) {
-        response.json().
-          then((data) => {
+        response.json()
+
+          .then((data) => {
           for (let i = 0; i < 10; i++) {
             const name = data.businesses[i].name;
             const phone = data.businesses[i].phone;
@@ -80,3 +81,20 @@ function restaurants (name, phone, address, rating, review, image){
     </div>`;
 };
 
+
+function getLocation(callback) {
+  if (navigator.geolocation) {
+    var lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
+      console.log(position);
+      var user_position = {};
+      user_position.lat = position.coords.latitude;
+      user_position.lng = position.coords.longitude;
+      callback(user_position);
+    });
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+}
+getLocation(function (lat_lng) {
+  console.log(lat_lng);
+});

@@ -1,5 +1,5 @@
 body {
-    height: 100%;
+    height: 50%;
     overflow: visible;
 }
 
@@ -16,16 +16,16 @@ body {
 }
 
 .restaurants {
-    flex: 1;
+    flex: 5;
     position: relative;
 }
 
 #input {
     padding: 12px 20px;
     box-sizing: border-box;
-    border: 2px solid #ccc;
+    border: 2px solid rgb(20, 2, 2);
     border-radius: 4px;
-    background-color: #f8f8f8;
+    background-color: #f7f6f5;
     resize: none;
 }
 
