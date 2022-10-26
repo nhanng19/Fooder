@@ -1,6 +1,5 @@
 const submit = document.getElementById("submit");
 const restaurant = document.getElementById("restaurants");
-const gif = document.querySelector(".gif");
 
 
 $(".menu-item").click(function (event) {
@@ -55,7 +54,6 @@ document.getElementById('input').addEventListener("keypress", function (e) {
 
 
 const getFood = () => {
-  gif.style.display="none";
   var myHeaders = new Headers();
   myHeaders.append("apikey", "I1v5mLVa9E2WwsnrKGzY0mVoEpGHTE62");
   const query = document.getElementById("input").value;
@@ -79,13 +77,13 @@ const getFood = () => {
         const info = $(".info");
         recipes[i].innerHTML = recipe;
         images[i].src = image
-        info[i].style.display = "flex";
+        info[i].style.display = "inline-block";
       }
     });
 };
 
 function restaurants(name, phone, address, rating, review, image) {
-  restaurant.innerHTML += `<div class="card d-inline-flex mx-3" style="width: 30%;border-radius: 20px;background-color:white;">
+  restaurant.innerHTML += `<div class="card d-inline-flex mx-6" style="width: 30%;border-radius: 20px;background-color:white;">
     <div class="card-body text-center">
     <h6 class="card-subtitle mb-2 text-muted" id ='cardInfo'>Name: ${name}</h6>
     <h6 class="card-subtitle mb-2 text-muted" id ='cardInfo'>Address: ${address}</h6>
@@ -96,6 +94,8 @@ function restaurants(name, phone, address, rating, review, image) {
     </div>
     </div>`;
 }
+
+submit.addEventListener("click", getFood);
 
 function getLocation(callback) {
   if (navigator.geolocation) {
