@@ -1,5 +1,7 @@
 const submit = document.getElementById("submit");
 const restaurant = document.getElementById("restaurants");
+const gif = document.querySelector(".gif");
+
 
 $(".menu-item").click(function (event) {
   restaurant.innerHTML = "";
@@ -53,6 +55,7 @@ document.getElementById('input').addEventListener("keypress", function (e) {
 
 
 const getFood = () => {
+  gif.style.display="none";
   var myHeaders = new Headers();
   myHeaders.append("apikey", "I1v5mLVa9E2WwsnrKGzY0mVoEpGHTE62");
   const query = document.getElementById("input").value;
@@ -76,7 +79,7 @@ const getFood = () => {
         const info = $(".info");
         recipes[i].innerHTML = recipe;
         images[i].src = image
-        info[i].style.display = "block";
+        info[i].style.display = "flex";
       }
     });
 };
@@ -106,6 +109,4 @@ function getLocation(callback) {
     alert("Geolocation is not supported by this browser.");
   }
 }
-
-
 
