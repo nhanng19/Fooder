@@ -25,15 +25,17 @@ $(".menu-item").click(function (event) {
         if (response.ok) {
           response.json().then((data) => {
             for (let i = 0; i < 6; i++) {
+              console.log(data.businesses)
               const name = data.businesses[i].name;
               const phone = data.businesses[i].phone;
               const address =
                 data.businesses[i].location.display_address[0] + " "
-                data.businesses[i].location.display_address[1];
+              data.businesses[i].location.display_address[1];
+              const categories = data.businesses[i].categories[1].title;
               const rating = data.businesses[i].rating;
               const review = data.businesses[i].review_count;
               const image = data.businesses[i].image_url;
-              restaurants(name, phone, address, rating, review, image);
+              restaurants(name, phone, address, rating, review, image, categories);
             }
           });
         } else {
@@ -82,19 +84,37 @@ const getFood = () => {
     });
 };
 
-function restaurants(name, phone, address, rating, review, image) {
-  restaurant.innerHTML += `<div class="card d-inline-flex mx-6" style="width: 30%;border-radius: 20px;background-color:white;">
-    <div class="card-body text-center">
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardInfo'>Name: ${name}</h6>
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardInfo'>Address: ${address}</h6>
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Phone: ${phone}</h6>
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Rating: ${rating}</h6>
-    <h6 class="card-subtitle mb-2 text-muted" id ='cardinfo'>Reviews: ${review}</h6>
-    <img class = "food-img" style = "width: 250px; height: 300px" src = "${image}" />
+function restaurants(name, phone, address, rating, review, image, categories) {
+  restaurant.innerHTML += `
+<div class="card d-inline-flex mx-6" style="width: 300px; border-radius: 20px;background-color:white;">
+      <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+        <img src="${image}" style ="height:250px; width: 300px" class="img-fluid" />
+        <a href="#!">
+          <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+        </a>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title font-weight-bold"><a>${name}</a></h5>
+        <ul class="list-unstyled list-inline mb-0">
+          <li class="list-inline-item">
+         <p class="text-muted"> ${address}</p>
+          </li>
+          <li class="list-inline-item">
+            <p class="text-muted">${rating} (${review})</p>
+          </li>
+        </ul>
+        <p class="mb-2">$ • ${categories}</p>
+        <p class="card-text">${phone}</p>
+        <hr class="my-4" />
+      </div>
     </div>
-    </div>`;
+`;
 }
 
+
+`
+
+`
 submit.addEventListener("click", getFood);
 
 function getLocation(callback) {
