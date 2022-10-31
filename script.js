@@ -31,7 +31,7 @@ $(".menu-item").click(function (event) {
               const address =
                 data.businesses[i].location.display_address[0] + " "
               data.businesses[i].location.display_address[1];
-              const categories = data.businesses[i].categories[1].title;
+              const categories = data.businesses[i].categories[0].title;
               const rating = data.businesses[i].rating;
               const review = data.businesses[i].review_count;
               const image = data.businesses[i].image_url;
