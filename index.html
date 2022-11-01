@@ -10,15 +10,15 @@
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous"
     />
-    <link rel = "icon" href="food.gif">
-    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="/assets/img/food.gif" />
+    <link rel="stylesheet" href="/assets/css/style.css" />
 
     <title>Fooder</title>
   </head>
   <body>
     <!-- Navbar -->
     <nav>
-      <a href="#" class="logo">
+      <a class="logo">
         <h1>
           <span class="yelpin">Fooder</span>
           <span class="food">&#127857;</span>
@@ -27,89 +27,105 @@
 
       <ul>
         <li class="nav-item">
-          <a href="about" class="nav-link" id="nav-link">About</a>
+          <a class="nav-link" id="nav-link">About</a>
         </li>
       </ul>
     </nav>
 
+    <section class="about" id="about">
+      <h3>What we do</h3>
+      <p>
+        We hope to enrich lives of consumers and small business owners. In
+        pursuit of this mission, we want to provide the most helpful information
+        possible about local businesses.
+      </p>
+
+      <h3>Where the magic happens</h3>
+      <p>
+        We are a team of passionate people who love to eat and love to help
+        others. We are here to help you find the best food in your area.
+      </p>
+    </section>
+
     <!--Yelpin Bio-->
-    <section class="bio">
-      <div class="divider">
-        <div class="intro-text">
-          <h1>
-            <span class="hungrybio">NOM NOM NOM</span> <br />
-            <span class="hungry">get food in your area now!</span>
-          </h1>
-          <p>
-            Fooder connects people with great local buisinesses. <br />
-            Let us do it for you!
-          </p>
-          <div class="btn search" id="container">
-            <div class="input-group mb-3">
-              <input
-                id="input"
-                type="text"
-                class="form-control"
-                placeholder="What are you craving?"
-                aria-label="Recipient's username"
-                aria-describedby="basic-addon2"
-              />
-              <div class="input-group-append">
-                <button
-                  id="submit"
-                  class="btn btn-outline-secondary"
-                  type="button"
-                >
-                  Submit
-                </button>
+
+    <div class="landing">
+      <section class="bio">
+        <div class="divider">
+          <div class="intro-text">
+            <h1>
+              <span class="hungrybio">NOM NOM NOM!</span> <br />
+              <span class="hungry">Get food in your area now!</span>
+            </h1>
+            <p>
+              Fooder connects people with great local businesses. <br />
+              Let us do it for you!
+            </p>
+            <div class="btn search" id="container">
+              <div class="input-group mb-3">
+                <input
+                  id="input"
+                  type="text"
+                  class="form-control"
+                  placeholder="What are you craving?"
+                  aria-label="Recipient's username"
+                  aria-describedby="basic-addon2"
+                />
+                <div class="input-group-append">
+                  <button
+                    id="submit"
+                    class="btn btn-outline-secondary"
+                    type="button"
+                  >
+                    Submit
+                  </button>
+                </div>
               </div>
             </div>
           </div>
+
+          <div class="gif">
+            <img src="/assets/img/food.gif" alt="food gif" />
+          </div>
         </div>
-
-        <div class="gif">
-          <img src="food.gif" alt="food gif" />
+      </section>
+      <div class="food-container">
+        <div class="info">
+          <img src="" alt="image" class="menu-img" />
+          <div class="overlay">
+            <div class="menu-item"></div>
+          </div>
+        </div>
+        <div class="info">
+          <img src="" alt="image" class="menu-img" />
+          <div class="overlay">
+            <div class="menu-item"></div>
+          </div>
+        </div>
+        <div class="info">
+          <img src="" alt="image" class="menu-img" />
+          <div class="overlay">
+            <div class="menu-item"></div>
+          </div>
+        </div>
+        <div class="info">
+          <img src="" alt="image" class="menu-img" />
+          <div class="overlay">
+            <div class="menu-item"></div>
+          </div>
+        </div>
+        <div class="info">
+          <img src="" alt="image" class="menu-img" />
+          <div class="overlay">
+            <div class="menu-item"></div>
+          </div>
         </div>
       </div>
-    </section>
-    <div class ="food-container">
-    <div class="info">
-      <img src="" alt="image" class="menu-img" />
-      <div class="overlay">
-        <div class="menu-item"></div>
-      </div>
-    </div>
-    <div class="info">
-      <img src="" alt="image" class="menu-img" />
-      <div class="overlay">
-        <div class="menu-item"></div>
-      </div>
-    </div>
-    <div class="info">
-      <img src="" alt="image" class="menu-img" />
-      <div class="overlay">
-        <div class="menu-item"></div>
-      </div>
-    </div> 
-    <div class="info">
-      <img src="" alt="image" class="menu-img" />
-      <div class="overlay">
-        <div class="menu-item"></div>
-      </div>
-    </div>
-    <div class="info">
-      <img src="" alt="image" class="menu-img" />
-      <div class="overlay">
-        <div class="menu-item"></div>
-      </div>
-    </div>
 
+      <div class="restaurants" id="restaurants"></div>
     </div>
-
-
-    <div class="restaurants" id="restaurants"></div>
   </body>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="script.js"></script>
+  <script src="/assets/js/script.js"></script>
 </html>
