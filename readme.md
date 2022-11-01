@@ -6,12 +6,12 @@ So lets say Jake just moved to LA, a new city, no friends to take him anywhere, 
 ## 💻 What it does
 Fooder is a food search web application that would allow users to quickly find multiple restaurant locations of savory and delicious food. We will ask you for your location services and with that we can directly pinpoint you position wherever you are and give you food in your location.
 
-![](./assets/front.png)
+![](./assets/img/front.png)
 
 ## ⚙️ How we built it
 Our website is built entirely with HTML5, CSS3, and JavaScript. Launched a framework called Bootstrap that allowed us to use style our website. For our APIs, we used two APIs: Spoonacular and YelpAPI. Spoonacular gave us the ability to use a information (data) of different types of food and manipulate the data where we could let the user find any type of food of their choice. The YelpAPI calls would allow us to find different restaurants and store data and by taking SpoonacularsAPI calls and manipulating the data moving forward into Yelp's API, we would be able to accomplish our goal to allow the user to get any type of food in his/her area!
 
-![](./assets/yelp.png)
+![](./assets/img/yelp.png)
 
 ## 🧩 Challenges we ran into
 We encountered the CORS policy which would block us from using the YelpAPI key in the frontend of the application. YelpAPI key according to yelp only wants the key in the backend because they want to keep secrecy with key to prevent publicly exposing your credentials which could result to your account being compromised (ONLINE THEFT EXIST). So a way around it was we used a proxy that would bypass the CORS policy called nameless-scrubland-76048.herokuapp.com and allowing us to run it on the frontend side of things. It was extremely difficult to find simply but we eventually were able to solve the problem.
