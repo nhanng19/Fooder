@@ -1,7 +1,6 @@
 const submit = document.getElementById("submit");
 const restaurant = document.getElementById("restaurants");
 
-
 $(".menu-item").click(function (event) {
   restaurant.innerHTML = "";
   getLocation(function (lat_lng) {
@@ -9,9 +8,7 @@ $(".menu-item").click(function (event) {
     const lon = lat_lng.lng;
     const item = $(event.target).text();
     const items = item.replace(/ /g, "%20");
-    console.log(item);
     var url = `https://nameless-scrubland-76048.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&term=${items}`;
-    console.log(url);
     fetch(url, {
       method: "GET",
       headers: {
@@ -20,40 +17,42 @@ $(".menu-item").click(function (event) {
           "5VIQsxmIHW5OiTntMOguATgmQrrCtZmy8ro_Ee8VXK_qNNsTdodI43XzVJyL2i2Ciyr8Ts99VT2hA7ysknWzjc2wT2tDP8AGT8MqlPHrJq6L9jvKUE6OXqgSvIhOY3Yx",
         "Access-Control-Allow-Origin": "*",
       },
-    })
-      .then(function (response) {
-        if (response.ok) {
-          response.json().then((data) => {
-            for (let i = 0; i < 6; i++) {
-              console.log(data.businesses)
-              const name = data.businesses[i].name;
-              const phone = data.businesses[i].phone;
-              const address =
-                data.businesses[i].location.display_address[0] + " "
-              data.businesses[i].location.display_address[1];
-              const categories = data.businesses[i].categories[0].title;
-              const rating = data.businesses[i].rating;
-              const review = data.businesses[i].review_count;
-              const image = data.businesses[i].image_url;
-              restaurants(name, phone, address, rating, review, image, categories);
-            }
-          });
-        } else {
-          alert("Error: " + response.statusText);
-        }
-      })
-      .catch(function (e) {
-        console.log(e);
-      });
+    }).then(function (response) {
+      if (response.ok) {
+        response.json().then((data) => {
+          for (let i = 0; i < 6; i++) {
+            const name = data.businesses[i].name;
+            const phone = data.businesses[i].phone;
+            const address =
+              data.businesses[i].location.display_address[0] + " ";
+            data.businesses[i].location.display_address[1];
+            const categories = data.businesses[i].categories[0].title;
+            const rating = data.businesses[i].rating;
+            const review = data.businesses[i].review_count;
+            const image = data.businesses[i].image_url;
+            restaurants(
+              name,
+              phone,
+              address,
+              rating,
+              review,
+              image,
+              categories
+            );
+          }
+        });
+      } else {
+        alert("Error: " + response.statusText);
+      }
+    });
   });
 });
 
-document.getElementById('input').addEventListener("keypress", function (e) {
+document.getElementById("input").addEventListener("keypress", function (e) {
   if (e.key === "Enter") {
-    getFood()
+    getFood();
   }
 });
-
 
 const getFood = () => {
   var myHeaders = new Headers();
@@ -75,10 +74,10 @@ const getFood = () => {
         const recipe = data.results[i].title;
         const image = data.results[i].image;
         const recipes = $(".menu-item");
-        const images = $(".menu-img")
+        const images = $(".menu-img");
         const info = $(".info");
         recipes[i].innerHTML = recipe;
-        images[i].src = image
+        images[i].src = image;
         info[i].style.display = "inline-block";
       }
     });
@@ -111,15 +110,13 @@ function restaurants(name, phone, address, rating, review, image, categories) {
 `;
 }
 
-
-`
-
-`
 submit.addEventListener("click", getFood);
 
 function getLocation(callback) {
   if (navigator.geolocation) {
-    const lat_lng = navigator.geolocation.getCurrentPosition(function (position) {
+    const lat_lng = navigator.geolocation.getCurrentPosition(function (
+      position
+    ) {
       var user_position = {};
       user_position.lat = position.coords.latitude;
       user_position.lng = position.coords.longitude;
@@ -130,20 +127,20 @@ function getLocation(callback) {
   }
 }
 
-const home = document.querySelector('.logo')
-const about = document.querySelector('.nav-link')
-const landingPage = document.querySelector('.landing');
-const aboutPage = document.querySelector('.about');
+const home = document.querySelector(".logo");
+const about = document.querySelector(".nav-link");
+const landingPage = document.querySelector(".landing");
+const aboutPage = document.querySelector(".about");
 
 const changePage = () => {
-    aboutPage.style.display = "flex";
-    landingPage.style.display = "none";
-}
+  aboutPage.style.display = "flex";
+  landingPage.style.display = "none";
+};
 
 const homePage = () => {
   aboutPage.style.display = "none";
-  landingPage.style.display = "block"
-}
+  landingPage.style.display = "block";
+};
 
 about.addEventListener("click", changePage);
-home.addEventListener('click', homePage)
+home.addEventListener("click", homePage);
