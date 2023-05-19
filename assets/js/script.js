@@ -8,7 +8,7 @@ $(".menu-item").click(function (event) {
     const lon = lat_lng.lng;
     const item = $(event.target).text();
     const items = item.replace(/ /g, "%20");
-    var url = `https://infinite-shelf-46659.herokuapp.com/https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&term=${items}`;
+    var url = `https://cors-frontend.onrender.com/https://api.yelp.com/v3/businesses/search?latitude=${lat}&longitude=${lon}&term=${items}`;
     fetch(url, {
       method: "GET",
       headers: {
